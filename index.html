@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Model Institute of Science and Technology</title>
+    <link rel="stylesheet" href="./src/output.css" />
+    <link
+      rel="shortcut icon"
+      href="/public/1670216791.png"
+      type="image/x-icon"
+    />
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body>
+    <!-- Background section Start -->
+    <div
+      class="relative h-screen"
+      x-data="typewriterSlider()"
+      x-init="startTyping()"
+    >
+      <template x-for="(image, index) in images" :key="index">
+        <img
+          x-show="currentImageIndex === index"
+          x-transition:enter="transition-opacity duration-[2000ms] ease-in-out"
+          x-transition:enter-start="opacity-0"
+          x-transition:enter-end="opacity-100"
+          x-transition:leave="transition-opacity duration-[2000ms] ease-in-out"
+          x-transition:leave-start="opacity-100"
+          x-transition:leave-end="opacity-0"
+          :src="image"
+          alt="Background"
+          class="w-full h-full bg-cover bg-center absolute top-0 left-0 z-0"
+        />
+      </template>
+
+      <!-- Overlay -->
+      <div class="absolute inset-0 bg-black/50 z-10"></div>
+
+      <!-- Top bar -->
+      <div class="absolute w-full bg-black/20 z-50">
+        <div
+          class="max-w-7xl mx-auto flex justify-between items-center px-6 py-2 text-white text-sm font-bold"
+        >
+          <!-- LEFT MENU -->
+          <div class="flex space-x-6 text-white/80">
+            <a
+              href="#"
+              class="flex items-center gap-1 border-r pr-4 hover:text-[#009F51]"
+              ><i class="fa-regular fa-note-sticky"></i> Notices</a
+            >
+            <a
+              href="#"
+              class="flex items-center gap-1 border-r pr-4 hover:text-[#009F51]"
+              ><i class="fa-solid fa-book-open-reader"></i> Library</a
+            >
+            <a
+              href="#"
+              class="flex items-center gap-1 border-r pr-4 hover:text-[#009F51]"
+              ><i class="fas fa-user"></i> People</a
+            >
+            <a
+              href="#"
+              class="flex items-center gap-1 border-r pr-4 hover:text-[#009F51]"
+              ><i class="fa-solid fa-graduation-cap"></i> Faculty</a
+            >
+            <a href="#" class="flex items-center gap-1 hover:text-[#009F51]"
+              ><i class="far fa-calendar-check"></i> News & Events</a
+            >
+          </div>
+
+          <!-- SOCIAL ICONS -->
+          <div class="flex space-x-2">
+            <a
+              href="https://web.facebook.com/groups/447275896199320"
+              target="_blank"
+              class="bg-[#009f51] text-white rounded-full w-8 h-8 flex items-center justify-center hover:bg-[#0866FF] transition"
+            >
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a
+              href="mailto:mistgazipur98@gmail.com"
+              target="_blank"
+              class="bg-[#009f51] text-white rounded-full w-8 h-8 flex items-center justify-center hover:bg-red-600 transition"
+            >
+              <i class="fas fa-envelope"></i>
+            </a>
+            <a
+              href="tel:+8801839911625"
+              class="bg-[#009f51] text-white rounded-full w-8 h-8 flex items-center justify-center hover:bg-[#009f3da2] transition"
+            >
+              <i class="fas fa-phone"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Navigation Bar -->
+      <div
+        x-data="{ scrolled: false }"
+        x-init="window.addEventListener('scroll', () => { scrolled = window.scrollY > 10 })"
+        :class="{
+    'bg-white text-black top-0 shadow-md': scrolled,
+    'bg-black/20 text-white top-[50px]': !scrolled
+  }"
+        class="fixed w-full z-40 transition-all duration-300 ease-in-out"
+      >
+        <div
+          class="max-w-7xl mx-auto flex items-center justify-between py-3 px-4"
+        >
+          <!-- Left Logo -->
+          <img
+            src="https://mistte.edu.bd//uploads/header/1670216791.png"
+            alt="Left Logo"
+            class="h-20"
+          />
+
+          <!-- Center Navigation -->
+          <div class="flex-grow flex justify-center">
+            <div
+              class="flex items-center space-x-6 font-bold uppercase transition-all duration-300"
+              :class="scrolled ? 'text-black text-xs' : 'text-white text-sm'"
+            >
+              <a
+                href="#"
+                :class="scrolled ? 'text-[#009f51] border-t-2' : 'text-[#009f51] border-t-2'"
+                >Home</a
+              >
+              <a href="#" class="hover:text-[#009F51] hover:border-t-2"
+                >About MIST</a
+              >
+              <a
+                href="#"
+                class="relative hover:text-[#009F51] hover:border-t-2"
+              >
+                Admissions
+                <span
+                  class="absolute -top-1 -right-3 bg-[#009f51] text-white text-xs font-bold flex items-center justify-center rounded-full"
+                ></span>
+              </a>
+              <a href="#" class="hover:text-[#009F51] hover:border-t-2"
+                >Academic</a
+              >
+              <a href="#" class="hover:text-[#009F51] hover:border-t-2"
+                >Department</a
+              >
+              <a href="#" class="hover:text-[#009F51] hover:border-t-2"
+                >Administration</a
+              >
+              <a href="#" class="hover:text-[#009F51] hover:border-t-2"
+                >Contact Us</a
+              >
+
+              <!-- Divider -->
+              <span
+                :class="scrolled ? 'border-black' : 'border-white'"
+                class="h-4 border-l mx-4"
+              ></span>
+
+              <!-- Search Icon -->
+              <a href="#" :class="scrolled ? 'text-black' : 'text-white'"
+                ><i class="fas fa-search"></i
+              ></a>
+            </div>
+          </div>
+
+          <!-- Right Logo -->
+          <img
+            src="https://mistte.edu.bd//uploads/header1/1670216791.png"
+            alt="Right Logo"
+            class="h-20"
+          />
+        </div>
+      </div>
+
+      <!-- Hero text content -->
+      <div
+        class="absolute top-[300px] left-1/2 transform -translate-x-1/2 z-30 text-center text-white px-4"
+      >
+        <h1 class="text-4xl md:text-5xl font-extrabold mb-2">Welcome to</h1>
+
+        <!-- Main Typing Text -->
+        <h2 class="text-2xl md:text-3xl font-bold mb-4 min-h-[3rem]">
+          <span x-text="displayedText"></span>
+          <span
+            x-show="showPunctuation"
+            class="inline-block"
+            x-text="punctuationMark"
+          ></span>
+        </h2>
+
+        <!-- Bangla intro line -->
+        <p
+          class="text-lg min-h-[100px]"
+          x-show="showIntro"
+          x-transition:leave="transition transform duration-700"
+          x-transition:leave-start="opacity-100 translate-y-0"
+          x-transition:leave-end="opacity-0 translate-y-4"
+          x-text="introText"
+        ></p>
+        <!-- About MIST button -->
+        <div
+          x-show="showIntro"
+          x-transition:enter="transform transition duration-700 ease-out"
+          x-transition:enter-start="translate-y-10 opacity-0"
+          x-transition:enter-end="translate-y-0 opacity-100"
+          x-transition:leave="transform transition duration-700 ease-in"
+          x-transition:leave-start="opacity-100 translate-y-0"
+          x-transition:leave-end="opacity-0 translate-y-4"
+        >
+          <button
+            class="mt-6 px-8 py-4 bg-[#009f51] text-white font-extrabold rounded-xl hover:bg-green-600 transition-all transform hover:-translate-y-1 hover:scale-105 duration-300 ease-in-out"
+          >
+            About MIST <i class="fa-solid fa-arrow-right"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Scrolling section -->
+      <div
+        class="absolute bottom-0 left-1/2 transform -translate-x-1/2 z-30 w-[95%]"
+      >
+        <div
+          class="bg-white text-[#009f51] text-sm font-bold px-6 py-2 rounded-full shadow-lg whitespace-nowrap overflow-hidden"
+        >
+          <marquee behavior="scroll" direction="left"
+            >*** *****বিস্তারিত: আমাদের ইঞ্জিনিয়ারিং কলেজে ২০২৫-২০২৬
+            শিক্ষাবর্ষের জন্য ভর্তি কার্যক্রম শুরু হয়েছে। ১১টি বিশেষায়িত বিভাগ
+            বা টেকনোলজিতে ভর্তির সুযোগ রয়েছে। দ্রুত আবেদন করুন! *** ***
+            Admission Going on, Session 2024-2025 *** *** "ভর্তি বিজ্ঞপ্তি
+            ২০২৫-২০২৬" *** *** শিরোনাম: ভর্তি চলছে ! ভর্তি চলছে !! ভর্তি চলছে
+            !!! দেশের শীর্ষস্থানীয় ইঞ্জিনিয়ারিং কলেজ (MIST) ২০২৪-২০২৫
+            শিক্ষাবর্ষে ভর্তি চলছে ! *** *** বিভাগসমূহ: ১) ডিপ্লোমা ইন টেক্সটাইল
+            ২) ডিপ্লোমা ইন কম্পিউটার সায়েন্স অ্যান্ড টেকনোলজি ৩) ডিপ্লোমা ইন
+            ইলেকট্রিক্যাল ইঞ্জিনিয়ারিং ৪) ডিপ্লোমা ইন মেকানিক্যাল ইঞ্জিনিয়ারিং
+            ৫) ডিপ্লোমা ইন সিভিল ইঞ্জিনিয়ারিং *** *** ৬) ডিপ্লোমা ইন আর্কিটেচার
+            ইঞ্জিনিয়ারিং ৭) ডিপ্লোমা ইন অটোমোবাইল ইঞ্জিনিয়ারিং 8) ডিপ্লোমা ইন
+            ইলেকট্রনিক্স ইঞ্জিনিয়ারিং *** *** ৯) ডিপ্লোমা ইন টেলিকমিউনিকেশন
+            ইঞ্জিনিয়ারিং ১০) ডিপ্লোমা ইন সার্ভেয়িং টেকনোলজি ১১) ডিপ্লোমা ফুড ইন
+            ইঞ্জিনিয়ারিং *** *** *ভর্তি চলছে! ভর্তি চলছে!! ভর্তি চলছে!!! দেশের
+            শীর্ষস্থানীয় ইঞ্জিনিয়ারিং কলেজ (MIST) ২০২৪-২০২৫ শিক্ষাবর্ষে ভর্তি
+            চলছে! ***
+          </marquee>
+        </div>
+      </div>
+    </div>
+    <!-- Background section End -->
+
+    <!-- Teachers Short Info and Event, Notice and News Section -->
+    <section class="w-full my-20">
+      <div class="container mx-auto px-4 md:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+          <!-- Profile Section (Left) -->
+          <div
+            x-data="{
+    activeIndex: 0,
+    cards: [
+      {
+        img: 'https://www.mistte.edu.bd/uploads/teacher/1717398485.jpg',
+        text: 'Welcome to the Website of Dhaka University of Engineering & Technology, Gazipur. Dhaka University of Engineering & Technology, Gazipur (abbreviated as DUET) is a pioneer in engineering education in Bangladesh especially for the diploma engineers. DUET was founded as the College of Engineering, Dhaka in 1980. Welcome to the Website of Dhaka University of Engineering & Technology, Gazipur. Dhaka University of Engineering & Technology, Gazipur (abbreviated as DUET) is a pioneer in engineering education in Bangladesh especially for the diploma engineers. DUET was founded as the College of Engineering, Dhaka in 1980. It was then renamed as Dhaka Engineering College (DEC) under the University of Dhaka in 1981. Welcome to the Website of Dhaka University of Engineering & Technology, Gazipur.',
+        name: '- Engr. Md. Sajib Khan -',
+        position: 'Head, Dept. of Computer Science and Technology (CST)'
+      },
+      {
+        img: 'https://www.mistte.edu.bd/uploads/teachers/MaharulIslam.jpg',
+        text: 'Welcome to the Website of Dhaka University of Engineering & Technology, Gazipur. Dhaka University of Engineering & Technology, Gazipur (abbreviated as DUET) is a pioneer in engineering education in Bangladesh especially for the diploma engineers. DUET was founded as the College of Engineering, Dhaka in 1980. Welcome to the Website of Dhaka University of Engineering & Technology, Gazipur. Dhaka University of Engineering & Technology, Gazipur (abbreviated as DUET) is a pioneer in engineering education in Bangladesh especially for the diploma engineers. DUET was founded as the College of Engineering, Dhaka in 1980. It was then renamed as Dhaka Engineering College (DEC) under the University of Dhaka in 1981. Welcome to the Website of Dhaka University of Engineering & Technology, Gazipur..',
+        name: '- Engr. Another Person -',
+        position: 'Senior Lecturer, Computer Engineering'
+      }
+    ],
+    init() {
+      setInterval(() => {
+        this.activeIndex = (this.activeIndex + 1) % this.cards.length;
+      }, 5000);
+    },
+    get translateStyle() {
+      return `transform: translateX(-${this.activeIndex * 100}%); transition: transform 0.5s ease-in-out;`
+    }
+  }"
+            class="relative overflow-hidden bg-white rounded shadow-2xl inset-shadow-sm"
+            style="height: 530px"
+          >
+            <div class="flex w-full h-full" :style="translateStyle">
+              <template x-for="(card, index) in cards" :key="index">
+                <div
+                  class="w-full flex-shrink-0 p-6 flex flex-col items-center text-center"
+                >
+                  <img
+                    :src="card.img"
+                    alt="Profile Image"
+                    class="rounded-full w-28 h-28 object-cover mb-4"
+                  />
+                  <p
+                    class="text-justify leading-7 text-sm"
+                    x-text="card.text"
+                  ></p>
+                  <a
+                    href="#"
+                    class="px-6 py-2 border border-gray-300 text-[#009f51] text-xs font-extrabold rounded uppercase hover:underline hover:bg-[#009f51] hover:text-white transition-all duration-300 mt-2"
+                  >
+                    View More <i class="fas fa-chevron-right pl-2"></i>
+                  </a>
+                  <p class="mt-6 text-sm font-black" x-text="card.name"></p>
+                  <p
+                    class="text-xs text-gray-600 font-semibold"
+                    x-text="card.position"
+                  ></p>
+                </div>
+              </template>
+            </div>
+          </div>
+
+          <!-- Events and Notices Section (Right) -->
+          <div x-data="{ activeTab: 'notices' }" class="space-y-3">
+            <!-- Event Section: Already Present -->
+            <div class="shadow-2xl">
+              <div
+                class="bg-[#F7F7F7] p-2 text-center hover:border-t-4 hover:border-[#009f51] border-y border-gray-200"
+              >
+                <h3 class="text-md font-extrabold text-[#009f51]">Events</h3>
+              </div>
+              <div class="overflow-hidden p-4">
+                <marquee>
+                  <div class="flex items-center space-x-2">
+                    <div class="bg-gray-100 p-2">
+                      <img
+                        src="https://www.duet.ac.bd/storage/event/2024-12-15_1734256067_140.png"
+                        class="w-8 h-8 object-cover"
+                      />
+                    </div>
+                    <div class="flex flex-col">
+                      <a
+                        href="#"
+                        class="underline font-semibold text-[#065831] text-xs"
+                      >
+                        1st International Conference on Recent Innovation in
+                        Civil Engineering
+                      </a>
+                      <div class="text-xs flex items-center space-x-1">
+                        <i class="fa-regular fa-calendar-days"></i>
+                        <span>November 07, 2024 – November 09, 2024</span>
+                      </div>
+                    </div>
+                  </div>
+                </marquee>
+              </div>
+            </div>
+
+            <!-- Notices / News Tabs -->
+            <div class="shadow-2xl">
+              <div class="flex border border-gray-300 rounded-t">
+                <div
+                  @click="activeTab = 'notices'"
+                  :class="activeTab === 'notices' ? 'bg-white border-b-0 border-t-4 border-[#009f51]' : 'bg-[#f7f7f7] hover:border-t-4 hover:border-[#009f51]'"
+                  class="w-1/2 text-center font-extrabold text-sm py-3 cursor-pointer border-r text-[#009f51]"
+                >
+                  Notices
+                </div>
+                <div
+                  @click="activeTab = 'news'"
+                  :class="activeTab === 'news' ? 'bg-white border-b-0 border-t-4 border-[#009f51]' : 'bg-[#f7f7f7] hover:border-t-4 hover:border-[#009f51]'"
+                  class="w-1/2 text-center font-extrabold text-sm py-3 cursor-pointer text-[#009f51]"
+                >
+                  News
+                </div>
+              </div>
+
+              <!-- Tab Content Container -->
+              <div
+                class="bg-white border border-t-0 border-gray-300 rounded-b px-6 py-8 space-y-4 overflow-auto"
+                style="height: 340px"
+              >
+                <!-- Notices Content -->
+                <div x-show="activeTab === 'notices'">
+                  <template
+                    x-for="notice in [
+        { date: '14 MAY 2025', title: 'ME বিভাগের বিভাগীয় প্রধানের দায়িত্ব প্রদান সংক্রান্ত', category: 'Others' },
+        { date: '14 MAY 2025', title: '২০২৫-২৬ অর্থ বছরের জন্য গৃহীত প্রকল্প প্রস্তুত প্রস্তাবের সময়সীমা বৃদ্ধি প্রসঙ্গে', category: 'Others' },
+        { date: '13 MAY 2025', title: 'অধ্যাপক পদের জন্য অফিস আদেশ সংক্রান্ত', category: 'Others' },
+        { date: '13 MAY 2025', title: 'অধ্যাপক পদের জন্য অফিস আদেশ', category: 'Others' },
+      ]"
+                    :key="notice.title"
+                  >
+                    <div class="pb-4">
+                      <div class="flex items-start space-x-3 font-medium">
+                        <!-- Date -->
+                        <div class="w-16 text-center overflow-hidden shadow-md">
+                          <!-- Top: Day + Month -->
+                          <div
+                            class="bg-[#f7f7f7] text-[#EA3433] font-extrabold text-xs py-1 uppercase"
+                          >
+                            14 MAY
+                          </div>
+                          <!-- Bottom: Year -->
+                          <div
+                            class="bg-[#EA3433] text-white font-extrabold text-xs py-1"
+                          >
+                            2025
+                          </div>
+                        </div>
+
+                        <!-- Title & Category -->
+                        <div>
+                          <p
+                            class="text-sm text-gray-800 hover:text-[#009f68]"
+                            x-text="notice.title"
+                          ></p>
+                          <p
+                            class="text-xs text-red-950 flex items-center space-x-2 font-medium"
+                          >
+                            <i class="fa-regular fa-folder"></i>
+                            <span
+                              x-text="notice.category"
+                              class="hover:underline"
+                            ></span>
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </template>
+                </div>
+
+                <!-- News Content -->
+                <div x-show="activeTab === 'news'">
+                  <template
+                    x-for="news in [
+        { date: '13 MAY 2025', title: 'বিশ্ববিদ্যালয় দিবস উপলক্ষে র‍্যালি অনুষ্ঠিত', category: 'Campus' },
+        { date: '12 MAY 2025', title: 'নতুন গবেষণা ল্যাব উদ্বোধন', category: 'Research' },
+      ]"
+                    :key="news.title"
+                  >
+                    <div class="pb-4">
+                      <div class="flex items-start space-x-3">
+                        <!-- Date -->
+                        <div class="w-16 text-center overflow-hidden shadow-md">
+                          <!-- Top: Day + Month -->
+                          <div
+                            class="bg-[#f7f7f7] text-[#009f51] font-extrabold text-xs py-1 uppercase"
+                          >
+                            14 MAY
+                          </div>
+                          <!-- Bottom: Year -->
+                          <div
+                            class="bg-[#009f51] text-white font-extrabold text-xs py-1"
+                          >
+                            2025
+                          </div>
+                        </div>
+                        <!-- Title & Category -->
+                        <div>
+                          <p
+                            class="text-sm text-gray-800 hover:text-[#009f68]"
+                            x-text="news.title"
+                          ></p>
+                          <p
+                            class="text-xs text-red-950 flex items-center space-x-2 font-medium"
+                          >
+                            <i class="fa-regular fa-folder"></i>
+                            <span
+                              x-text="news.category"
+                              class="hover:underline"
+                            ></span>
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </template>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Teachers Short Info and Event, Notice and News Section -->
+
+    <!-- About Us Section Start -->
+    <section class="bg-[#F7F7F7] py-14">
+      <div class="flex container mx-auto px-4 md:px-6 lg:px-8">
+        <!-- Left content -->
+        <div class="w-1/2">
+          <h1
+            class="text-2xl mb-2 tracking-tighter shining-effect font-semibold border-b-2"
+          >
+            প্রতিষ্ঠানের সংক্ষিপ্ত পরিচিতি
+          </h1>
+          <p class="mb-4 text-lg font-medium tracking-tighter">
+            Welcome to Model Institute of Science and Technology, Gazipur .
+          </p>
+          <p class="leading-7 text-sm text-justify">
+            একবিংশ শতাব্দির চ্যালেঞ্জ মোকাবেলার জন্য প্রয়োজন যুগোপযোগি কারিগরি
+            শিক্ষা। এই শিক্ষা দক্ষ জনশক্তি এবং একটি দেশের উন্নয়নের প্রধান চালিকা
+            শক্তি। কারিগরি শিক্ষায় শিক্ষিত যুব সমাজ হতে পারে সুপ্রতিষ্ঠিত এবং
+            দেশ ও জাতির উন্নয়নে রাখতে পারে বলিষ্ঠ অবদান। মডেল ইনস্টিটিউট অব
+            সায়েন্স এন্ড টেকনোলজি (এম.আই.এস.টি) বাংলাদেশ বেসরকারি কারিগরি শিক্ষা
+            প্রতিষ্ঠানের মধ্যে একটি শ্রেষ্ঠ ও আদর্শ প্রতিষ্ঠান। দীর্ঘ ২৬ বছর ধরে
+            ছাত্র-ছাত্রীদেরকে আত্মনির্ভলশীল, ব্যাক্তিত্ব সম্পন্ন, দক্ষতা,
+            পেশাাদারিত্ব, টেকসই নেতৃত্ব ও মানবতাবোধ উদ্দীপ্ত করে। তাদের বৃহত্তর
+            কর্মজীবনে প্রবেশ পথকে উন্মুক্ত করতে সাহায্য করছে এবং আর্থ সামাজিক
+            উন্নয়নে ও আন্তর্জাতিক ক্ষেত্রে বিরাট ভূমিকা রেখে আসছে। প্রতিষ্ঠানের
+            প্রতিষ্ঠাতা বিশিষ্ট প্রকৌশলী শিক্ষাবিদ, টেকসই উন্নয়ন বিশেষজ্ঞ ও
+            গবেষক প্রফেসর তাঁর নিজ বাসভবনে (৪৮৯ / পশ্চিম ভূরুলিয়া) ১৯৯৮ ইং সনে
+            বেসরকারি কারিগরি শিক্ষা প্রতিষ্ঠান হিসেবে বাংলাদেশ কারিগরি শিক্ষা
+            বোর্ড কর্তৃক প্রকৌশল ডিপ্লোমা শিক্ষাক্রমের অধিভুক্ত প্রাপ্তির
+            মাধ্যমে অত্যন্ত দক্ষতা ও সুনামের সঙ্গে শিক্ষা কার্যক্রম শুরু করেন।
+          </p>
+          <button
+            class="mt-2 bg-[#009f51] text-white px-8 text-xs py-2 font-bold rounded-tr-2xl hover:rounded-tr-none rounded-bl-2xl hover:rounded-bl-none hover:bg-[#02BB5F] transition-all duration-500 uppercase"
+          >
+            Read More
+          </button>
+        </div>
+
+        <!-- Right images -->
+        <div class="relative w-1/2">
+          <!-- Big image (back) -->
+          <img
+            src="https://www.mistte.edu.bd/uploads/about/1670042101.jpg"
+            alt="Big"
+            class="absolute top-28 w-72 h-64 shadow-xl left-72 z-30"
+          />
+
+          <!-- Bottom left image (middle layer) -->
+          <img
+            src="https://www.duet.ac.bd/storage/about-duet/ec.jpg"
+            alt="Bottom"
+            class="absolute top-36 left-10 w-40 h-32 shadow-lg"
+          />
+
+          <!-- Middle top image (front layer) -->
+          <img
+            src="https://mistte.edu.bd//uploads/slider/1717399978.jpg"
+            alt="Middle"
+            class="absolute top-2 w-52 h-44 shadow-lg right-1/2 left-32"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- Diploma Course Section Start -->
+    <section class="w-full py-14 bg-white" x-data="carousel()" x-init="start()">
+      <div class="container mx-auto px-4 md:px-6 lg:px-8">
+        <div class="text-center">
+          <h1 class="text-3xl tracking-tighter font-light">Diploma Courses</h1>
+          <div
+            class="h-[3px] w-48 bg-gradient-to-r from-[#009f51] to-[#851001] rounded mx-auto my-2"
+          ></div>
+          <p
+            class="text-[8px] md:text-[9px] lg:text-sm text-[#009f51] my-4 font-semibold"
+          >
+            8 বৎসর মেয়াদী ডিপ্লোমা-ইন-ইঞ্জিনিয়ারিং কোর্স সমূহ
+          </p>
+        </div>
+
+        <div class="py-8">
+          <div
+            class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-5"
+          >
+            <!-- Card 1 -->
+            <div
+              class="rounded-lg shadow-xl p-4 flex flex-col gap-3 text-start inset-shadow-sm"
+            >
+              <a href="#"
+                ><img
+                  src="https://www.mistte.edu.bd/uploads/course/1670046792.jpg"
+                  class="w-full rounded"
+                  alt="Course Image"
+              /></a>
+              <h3 class="text-xl font-semibold text-center">
+                Telecommunication Engineering
+              </h3>
+              <p class="text-sm text-justify leading-6">
+                মডেল ইনস্টিটিউট অব সায়েন্স এন্ড টেকনোলজি এর মেকানিক্যাল,
+                অটোমোবাইল এবং ফুড টেকনোলজি বিভাগীয় প্রধান।
+              </p>
+              <a
+                href="#"
+                class="px-6 py-2 text-center text-[#009f51] text-xs font-extrabold rounded text-[10px] uppercase hover:underline hover:bg-[#009f51] hover:text-white transition-all duration-300 mt-2"
+              >
+                View More <i class="fas fa-chevron-right pl-2"></i>
+              </a>
+            </div>
+
+            <!-- Card 2 -->
+            <div
+              class="rounded-lg shadow-xl p-4 flex flex-col gap-3 text-start inset-shadow-sm"
+            >
+              <a href="#"
+                ><img
+                  src="https://www.mistte.edu.bd/uploads/course/1670047446.jpg"
+                  class="w-full rounded"
+                  alt="Course Image"
+              /></a>
+              <h3 class="text-xl font-semibold text-center">
+                Architecture Engineering
+              </h3>
+              <p class="text-sm text-justify leading-6">
+                মডেল ইনস্টিটিউট অব সায়েন্স এন্ড টেকনোলজি এর মেকানিক্যাল,
+                অটোমোবাইল এবং ফুড টেকনোলজি বিভাগীয় প্রধান।
+              </p>
+              <a
+                href="#"
+                class="px-6 py-2 text-center text-[#009f51] text-xs font-extrabold rounded text-[10px] uppercase hover:underline hover:bg-[#009f51] hover:text-white transition-all duration-500 mt-2"
+              >
+                View More <i class="fas fa-chevron-right pl-2"></i>
+              </a>
+            </div>
+
+            <!-- Card 3 -->
+            <div
+              class="rounded-lg shadow-xl p-4 flex flex-col gap-3 text-start inset-shadow-sm"
+            >
+              <a href="#"
+                ><img
+                  src="https://www.mistte.edu.bd/uploads/course/1670047756.jpg"
+                  class="w-full rounded"
+                  alt="Course Image"
+              /></a>
+              <h3 class="text-xl font-semibold text-center">
+                Survey Technologies
+              </h3>
+              <p class="text-sm text-justify leading-6">
+                মডেল ইনস্টিটিউট অব সায়েন্স এন্ড টেকনোলজি এর মেকানিক্যাল,
+                অটোমোবাইল এবং ফুড টেকনোলজি বিভাগীয় প্রধান।
+              </p>
+              <a
+                href="#"
+                class="px-6 py-2 text-center text-[#009f51] text-xs font-extrabold rounded text-[10px] uppercase hover:underline hover:bg-[#009f51] hover:text-white transition-all duration-300 mt-2"
+              >
+                View More <i class="fas fa-chevron-right pl-2"></i>
+              </a>
+            </div>
+
+            <!-- Card 4 -->
+            <div
+              class="rounded-lg shadow-xl p-4 flex flex-col gap-3 text-start inset-shadow-sm"
+            >
+              <a href="#"
+                ><img
+                  src="https://www.mistte.edu.bd/uploads/course/1669434394.jpg"
+                  class="w-full rounded"
+                  alt="Course Image"
+              /></a>
+              <h3 class="text-xl font-semibold">Food Technology</h3>
+              <p class="text-sm text-justify leading-6">
+                মডেল ইনস্টিটিউট অব সায়েন্স এন্ড টেকনোলজি এর মেকানিক্যাল,
+                অটোমোবাইল এবং ফুড টেকনোলজি বিভাগীয় প্রধান।
+              </p>
+              <a
+                href="#"
+                class="px-6 py-2 text-center text-[#009f51] text-xs font-extrabold rounded text-[10px] uppercase hover:underline hover:bg-[#009f51] hover:text-white transition-all duration-300 mt-2"
+              >
+                View More <i class="fas fa-chevron-right pl-2"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Faculty Section -->
+    <section class="w-full bg-white">
+      <div class="container mx-auto px-4 md:px-6 lg:px-8">
+        <div class="text-center">
+          <h2 class="text-4xl font-light tracking-tighter">Faculty</h2>
+          <div
+            class="h-[3px] w-24 bg-gradient-to-r from-[#009f51] to-[#851001] rounded mx-auto my-2"
+          ></div>
+        </div>
+
+        <p
+          class="text-[8px] md:text-[9px] lg:text-sm text-[#009f51] my-4 font-extrabold text-center"
+        >
+          At present there are three faculties in the MIST
+        </p>
+
+        <div class="mt-10 grid grid-cols-1 md:grid-cols-3 gap-4">
+          <!-- Faculty Card 1 -->
+          <div class="bg-white rounded-lg shadow-xl p-6 inset-shadow-sm">
+            <h3 class="font-extrabold text-lg mb-4 tracking-tighter">
+              Faculty of Civil Engineering
+              <span class="text-[#009f51]">(CE)</span>
+            </h3>
+            <div
+              class="grid grid-cols-[auto_2fr] gap-x-3 gap-y-4 border-l pl-2 ml-2 border-gray-200"
+            >
+              <i
+                class="fa-solid fa-check border text-center p-1 w-6 h-6 text-sm font-extrabold text-[#009f51] rounded-full"
+              ></i>
+              <p class="text-sm font-medium hover:text-[#009f51]">
+                Department of Civil Engineering
+              </p>
+              <i
+                class="fa-solid fa-check border text-center p-1 w-6 h-6 text-sm font-extrabold text-[#009f51] rounded-full"
+              ></i>
+              <p class="text-sm font-medium hover:text-[#009f51]">
+                Department of Architecture
+              </p>
+              <i
+                class="fa-solid fa-check border text-center p-1 w-6 h-6 text-sm font-extrabold text-[#009f51] rounded-full"
+              ></i>
+              <p class="hover:text-[#009f51] text-sm font-medium">
+                Institute of Water and Environment
+              </p>
+              <i
+                class="fa-solid fa-check border text-center p-1 w-6 h-6 text-sm font-extrabold text-[#009f51] rounded-full"
+              ></i>
+              <p class="text-sm font-medium hover:text-[#009f51]">
+                Center for Climate Change & Sustainability Research
+              </p>
+            </div>
+          </div>
+
+          <!-- Faculty Card 2 -->
+          <div class="bg-white rounded-lg shadow-xl p-6 inset-shadow-sm">
+            <h3 class="font-extrabold text-lg mb-4 tracking-tighter">
+              Faculty of Mechanical Engineering
+              <span class="text-[#009f51]">(ME)</span>
+            </h3>
+            <div
+              class="grid grid-cols-[auto_2fr] gap-x-3 gap-y-4 border-l pl-2 ml-2 border-gray-200"
+            >
+              <i
+                class="fa-solid fa-check border text-center p-1 w-6 h-6 text-sm font-extrabold text-[#009f51] rounded-full"
+              ></i>
+              <p class="text-sm font-medium hover:text-[#009f51]">
+                Department of Mechanical Engineering
+              </p>
+              <i
+                class="fa-solid fa-check border text-center p-1 w-6 h-6 text-sm font-extrabold text-[#009f51] rounded-full"
+              ></i>
+              <p class="text-sm font-medium hover:text-[#009f51]">
+                Department of Textile Engineering
+              </p>
+              <i
+                class="fa-solid fa-check border text-center p-1 w-6 h-6 text-sm font-extrabold text-[#009f51] rounded-full"
+              ></i>
+              <p class="text-sm font-medium hover:text-[#009f51]">
+                Department of Industrial and Production Engineering
+              </p>
+              <i
+                class="fa-solid fa-check border text-center p-1 w-6 h-6 text-sm font-extrabold text-[#009f51] rounded-full"
+              ></i>
+              <p class="text-sm font-medium hover:text-[#009f51]">
+                Department of Materials and Metallurgical Engineering
+              </p>
+              <i
+                class="fa-solid fa-check border text-center p-1 w-6 h-6 text-sm font-extrabold text-[#009f51] rounded-full"
+              ></i>
+              <p class="text-sm font-medium hover:text-[#009f51]">
+                Department of Chemical Engineering
+              </p>
+            </div>
+          </div>
+
+          <!-- Faculty Card 3 -->
+          <div class="bg-white rounded-lg shadow-xl p-6 inset-shadow-sm">
+            <h3 class="font-extrabold text-lg mb-4 tracking-tighter">
+              Faculty of Electrical and Electronic Engineering
+              <span class="text-[#009f51]">(EEE)</span>
+            </h3>
+            <div
+              class="grid grid-cols-[auto_2fr] gap-x-3 gap-y-4 border-l pl-2 ml-2 border-gray-200"
+            >
+              <i
+                class="fa-solid fa-check border text-center p-1 w-6 h-6 text-sm font-extrabold text-[#009f51] rounded-full"
+              ></i>
+              <p class="text-sm font-medium hover:text-[#009f51]">
+                Department of Electrical and Electronic Engineering
+              </p>
+              <i
+                class="fa-solid fa-check border text-center p-1 w-6 h-6 text-sm font-extrabold text-[#009f51] rounded-full"
+              ></i>
+              <p class="text-sm font-medium hover:text-[#009f51]">
+                Department of Computer Science and Engineering
+              </p>
+              <i
+                class="fa-solid fa-check border text-center p-1 w-6 h-6 text-sm font-extrabold text-[#009f51] rounded-full"
+              ></i>
+              <p class="text-sm font-medium hover:text-[#009f51]">
+                Institute of Information & Communication Technology
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="relative inline-block">
+      <div
+        class="p-[6px] rounded-lg bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500 opacity-0 transition-all duration-300 hover:opacity-100"
+      >
+        <div class="rounded-lg bg-white p-6">
+          <p class="text-gray-700">হভার করলে বর্ডার দেখা যাবে!</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Diploma Course Section End -->
+  </body>
+
+  <script>
+    function typewriterSlider() {
+      return {
+        texts: [
+          "Model Institute of Science and Technology, Gazipur",
+          "মডেল ইনস্টিটিউট অব সায়েন্স এন্ড টেকনোলোজি, (গাজীপুর)",
+        ],
+        punctuation: [".", "।"],
+        images: [
+          "https://www.duet.ac.bd/storage/slider/2024-01-24-1706093990-647.jpg",
+          "https://www.duet.ac.bd/storage/slider/2024-01-24-1706093940-653.jpg",
+        ],
+
+        fullIntroText:
+          " ( জাঃবিশ্বঃ ও বা.কা.শি.বো. অধিভূক্ত, বানিজ্য মন্ত্রণালয়ের RJSCF রেজিষ্ট্রার্ড এবং GCC ট্রেড লাইসেন্স প্রাপ্ত বেসরকারি কলেজ , প্রশিক্ষণ ইনস্টিটিউট ও ইঞ্জিনিয়ারিং ফার্ম)",
+
+        // State
+        currentTextIndex: 0,
+        currentImageIndex: 0,
+        charIndex: 0,
+        introCharIndex: 0,
+        displayedText: "",
+        introText: "",
+        showPunctuation: false,
+        showButton: false,
+        showIntro: true,
+
+        get punctuationMark() {
+          return this.punctuation[this.currentTextIndex];
+        },
+
+        startTyping() {
+          this.displayedText = "";
+          this.charIndex = 0;
+          this.introText = "";
+          this.introCharIndex = 0;
+          this.showPunctuation = false;
+          this.showButton = false;
+
+          // Hide intro first, will trigger transition in
+          this.showIntro = false;
+
+          // Delay to show intro smoothly after load
+          setTimeout(() => {
+            this.showIntro = true;
+          }, 2000);
+
+          this.typeNextCharacter();
+        },
+
+        typeNextCharacter() {
+          if (this.charIndex < this.texts[this.currentTextIndex].length) {
+            this.displayedText += this.texts[this.currentTextIndex].charAt(
+              this.charIndex
+            );
+            this.charIndex++;
+            setTimeout(() => this.typeNextCharacter(), 60);
+          } else {
+            this.showPunctuation = true;
+            setTimeout(() => this.animateIntroText(), 800);
+          }
+        },
+
+        animateIntroText() {
+          if (this.introCharIndex < this.fullIntroText.length) {
+            this.introText += this.fullIntroText.charAt(this.introCharIndex);
+            this.introCharIndex++;
+            setTimeout(() => this.animateIntroText(), 30);
+          } else {
+            // Show button after intro done
+            this.showButton = true;
+
+            // Change slide after delay
+            setTimeout(() => {
+              this.switchTextAndImage();
+            }, 1000); // Wait 3s after intro done before changing
+          }
+        },
+
+        switchTextAndImage() {
+          this.showPunctuation = false;
+          this.showButton = false;
+          this.showIntro = false;
+
+          // Wait for animation to complete before resetting introText
+          setTimeout(() => {
+            this.introText = "";
+            this.currentTextIndex =
+              (this.currentTextIndex + 1) % this.texts.length;
+            this.currentImageIndex =
+              (this.currentImageIndex + 1) % this.images.length;
+            this.startTyping();
+          }, 800); // should match transition duration
+        },
+      };
+    }
+  </script>
+</html>
